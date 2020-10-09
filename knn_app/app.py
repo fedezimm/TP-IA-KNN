@@ -1,10 +1,10 @@
 from knn import *
 import streamlit as st
 
-c1 = generate_random_class_points(3, 1, 4, 2, 20, 1)
-c2 = generate_random_class_points(7, 2, 4, 1, 20, 2)
-c3 = generate_random_class_points(8, 3, 0, 1, 20, 3)
-c4 = generate_random_class_points(12, 1, 8, 2, 20, 4)
+c1 = generate_random_class_points(3, 1, 4, 2, 50, 1)
+c2 = generate_random_class_points(7, 2, 4, 1, 50, 2)
+c3 = generate_random_class_points(8, 3, 0, 1, 50, 3)
+c4 = generate_random_class_points(12, 1, 8, 2, 50, 4)
 
 entire_set = join_groups((c1, c2, c3, c4))
 
@@ -17,6 +17,10 @@ entire_set = join_groups((c1, c2, c3, c4))
 * Quizás estaría bueno acá que el usuario seleccione la proporcion de training y test para dividir el set. Default: 0.8, 0.2
 """
 st.sidebar.markdown('### Paso 1')
+train_prop = st.sidebar.selectbox('Seleccione la proporción de datos de entrenamiento',
+                    [0.7,0.75,0.8,0.85]
+)
+'La proporción de entrenamiento elegida es de: ', train_prop,'la de test es: ', round(1-train_prop,2)
 """
 ### Paso 2: Con los datos cargados se entrenarán modelos K-nearest Neighbors con K de 1 a N.
 * El dato N podrá ser elegido por el usuario. 
@@ -33,7 +37,8 @@ n = st.sidebar.slider(
      1, int(len(entire_set)/2)
 )
 
-training, testing = split(entire_set, 0.8, 0.2)
+training, testing = split(entire_set, train_prop, round(1-train_prop,2))
+
 
 coherences_multiple_k = test_multiple_knn(training, testing, lastk=n)
 
