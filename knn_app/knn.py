@@ -173,7 +173,7 @@ def knn_prediction_grid(predictors, k=5, h=0.25, plot=False, plot_format = "norm
     return (xx, yy, prediction_grid, confidence_grid, graph)
 
 # Código para testear algoritmo
-def split(points, training_prop, test_prop):
+def split(points, training_prop, test_prop, seed = 41):
     
     """
     This function takes:
@@ -192,6 +192,7 @@ def split(points, training_prop, test_prop):
         raise Exception("ValueError: Proportions of training and test sets must sums 1.")
         
     points_copy = points.copy()
+    np.random.seed(seed)
     np.random.shuffle(points_copy)
     
     split_point = round(len(points)*training_prop)

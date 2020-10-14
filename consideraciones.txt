@@ -1,0 +1,6 @@
+Agregar:
+    * Gráficos de distribuciones de datos de training y test para comprobar que ambos conjuntos se comportan de la misma manera.
+    * Los gráficos de grid:
+        * Diferenciar los puntos de training (sólo con estos generar el grid) y test (marcar con otra forma, X por ejemplo).
+    * Agregar lo de clasificar un nuevo punto y mostrar la prediccion con su valor de confianza asociado.
+    * Agregar Tests, cambiando el Seed??? 
