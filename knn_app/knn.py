@@ -227,7 +227,6 @@ def test_multiple_knn(training, test, lastk = 10):
     'training': the training set (np.ndarray),
     'test': the test set (np.ndarray),
     'lastk': With how many k values you want to test the model? K is taken from 1 to lastk (integer, default = 10),
-    'plot': Whether you want or not the plot (bool, default = True).
     
     Output:
     'coherences': an np.ndarray containing the coherences values for the differents k values asked for.
@@ -239,6 +238,9 @@ def test_multiple_knn(training, test, lastk = 10):
     return coherences
 
 def plot_multiple_k(coherences):
+    """
+    This function takes the coherences array of multiple k values and plots a "K vs Accuracy" graph 
+    """
     fig = plt.figure(figsize=(10,10)) 
     plt.plot(np.array(list(range(1, len(coherences) + 1))), coherences)
     plt.title("KNN con K de 1 a "+str(len(coherences)) )
@@ -248,6 +250,10 @@ def plot_multiple_k(coherences):
     return fig
 
 def determine_best_k(coherences):
+    """
+    This function takes the coherences array of multiple k values and determine the best 
+    value of coherence and to which K value/s belongs.
+    """
     best_coherence = np.amax(coherences)
 
     bests_k = []
@@ -256,3 +262,24 @@ def determine_best_k(coherences):
             bests_k.append(i+1)
             
     return bests_k, best_coherence
+
+def plot_training_test_distributions(training, test):
+    """
+    This function takes both sets (training and test) and plots their distributions to demonstrate that they
+    behaviour is similar
+    """
+
+    fig, ((ax11, ax12, ax13), (ax21, ax22, ax23)) = plt.subplots(2, 3, figsize=(10,10))
+    ax11.hist(training[:,0])
+    ax12.hist(training[:,1])
+    ax13.hist(training[:,2])
+    ax21.hist(test[:,0])
+    ax22.hist(test[:,1])
+    ax23.hist(test[:,2])
+    ax11.set_title("Training X")
+    ax12.set_title("Training Y")
+    ax13.set_title("Training Classes Distr.")
+    ax21.set_title("Test X")
+    ax22.set_title("Test Y")
+    ax23.set_title("Test Classes Distr.")
+    return fig

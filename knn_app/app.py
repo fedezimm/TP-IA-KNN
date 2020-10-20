@@ -1,5 +1,6 @@
 from knn import *
 import streamlit as st
+import time
 
 st.set_option('deprecation.showfileUploaderEncoding', False)
 
@@ -13,8 +14,10 @@ st.set_option('deprecation.showfileUploaderEncoding', False)
 
 file = st.file_uploader('Cargá el archivo con los datos')
 if file is not None:
+    
     sep = st.selectbox('Selecciona el separador de campos del archivo',[None, ",", ";", "Tab"])
     if sep is not None:
+        
         data = pd.read_csv(file, sep=sep)
 
         labels = data.iloc[:,2].unique()
@@ -37,17 +40,24 @@ if file is not None:
         
         
         st.write("Hay ", data.shape[0], ' puntos cargados')
+
+
         train_prop = st.selectbox('Seleccione la proporción de datos de entrenamiento',
                         [None,0.7,0.75,0.8,0.85]
         )
-
+        
         if train_prop is not None:
-
-            seed = st.select_slider('Seleccione un valor de seed para mezclar los datos y dividir el conjunto.', list(range(1,50)))
+            
+            st.write('La proporción de entrenamiento elegida es de: ', train_prop,'la de test es: ', round(1-train_prop,2))
+            seed = st.select_slider('Seleccione un valor de seed para mezclar los datos y dividir el conjunto.', list(range(1,51)))
             
             training, testing = split(data, train_prop, round(1-train_prop,2), seed=seed)
-            st.write('La proporción de entrenamiento elegida es de: ', train_prop,'la de test es: ', round(1-train_prop,2))
+            
             st.write('El seed elegido para mezclar los datos es de: ', seed)
+
+            if st.checkbox('Ver Distribución de los conjuntos'):
+                st.write(plot_training_test_distributions(training, testing))
+                st.write("Hay ", len(training), " puntos de entrenamiento y ", len(testing), " puntos de testeo.")
             """
             ## Paso 2: Con los datos cargados se entrenarán modelos K-nearest Neighbors con K de 1 a N.
 
