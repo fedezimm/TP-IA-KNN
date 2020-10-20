@@ -101,43 +101,52 @@ if file is not None:
                 rta = st.radio(
                     'Seleccione el formato del gráfico',
                     ("Normal","Con valores de confianza"), key=1
+                ); h1 = st.selectbox(
+                    'Seleccione la resolución del gráfico',
+                    [None,0.1,0.25,0.5], key=1
                 )
                 plot_format = 'normal' if rta == 'Normal' else 'confidence'
 
-                xx, yy, prediction_grid, confidence_grid, grid_graph = knn_prediction_grid(data, k=best_k, h=0.2, plot = True, plot_format=plot_format)
+                if h1 is not None:
+                    xx, yy, prediction_grid, confidence_grid, grid_graph = knn_prediction_grid(training, k=best_k, h=h1, plot = True, plot_format=plot_format, testing=testing)
 
-                st.write(grid_graph)
+                    st.pyplot(grid_graph)
 
-                """
-                ## Paso 4: Seleccioná cualquier K para comparar los Grids.
-                
-                """
-                
-                k_selected = st.selectbox(
-                    'Selecciona el valor de K',
-                    [None] + list(range(1,n+1))
-                )
-
-                if k_selected is not None:
-
-                    rta2 = st.radio(
-                        'Seleccione el formato del gráfico',
-                        ("Normal","Con valores de confianza"), key=2
+                    """
+                    ## Paso 4: Seleccioná cualquier K para comparar los Grids.
+                    
+                    """
+                    
+                    k_selected = st.selectbox(
+                        'Selecciona el valor de K',
+                        [None] + list(range(1,n+1))
                     )
 
-                    plot_format2 = 'normal' if rta2 == 'Normal' else 'confidence'
+                    if k_selected is not None:
 
-                    'Tu valor seleccionado de K es:', k_selected
-                    'El valor de coherencia para K=',k_selected,' es de ', coherences_multiple_k[k_selected-1]
+                        rta2 = st.radio(
+                            'Seleccione el formato del gráfico',
+                            ("Normal","Con valores de confianza"), key=2
+                        ); h2 = st.selectbox(
+                            'Seleccione la resolución del gráfico',
+                            [None, 0.1,0.25,0.5], key=2
+                        )
 
-                    xx2, yy2, prediction_grid2, confidence_grid2, grid_graph2 = knn_prediction_grid(data, k=k_selected, h=0.2, plot = True, plot_format=plot_format2)
+                        if h2 is not None:
 
-                    st.write(grid_graph2)
+                            plot_format2 = 'normal' if rta2 == 'Normal' else 'confidence'
 
-                    """
-                    ## Paso 5 - Cargá las coordenadas de nuevos puntos que quieras predecir.
-                    * Acá se mostrará la predicción del/ de los punto/s cargado/s y la confianza de esa/s predicción/es con:
-                        * El modelo del mejor K (Paso 3) y, 
-                        * El modelo del K seleccionado (Paso 4).
-                    """
+                            'Tu valor seleccionado de K es:', k_selected
+                            'El valor de coherencia para K=',k_selected,' es de ', coherences_multiple_k[k_selected-1]
+
+                            xx2, yy2, prediction_grid2, confidence_grid2, grid_graph2 = knn_prediction_grid(training, k=k_selected, h=h2, plot = True, plot_format=plot_format2, testing=testing)
+
+                            st.pyplot(grid_graph2)
+
+                            """
+                            ## Paso 5 - Cargá las coordenadas de nuevos puntos que quieras predecir.
+                            * Acá se mostrará la predicción del/ de los punto/s cargado/s y la confianza de esa/s predicción/es con:
+                                * El modelo del mejor K (Paso 3) y, 
+                                * El modelo del K seleccionado (Paso 4).
+                            """
                     

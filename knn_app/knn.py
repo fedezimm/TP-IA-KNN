@@ -92,25 +92,26 @@ def make_prediction_grid(points, limits, h, k):
     return (xx, yy, prediction_grid, confidence_grid)
 
 #Todos las funciones que tengan que ver con graficar algo hay que adaptarlo. Esta es una
-def plot_prediction_grid (xx, yy, prediction_grid, confidence_grid, predictors):
+def plot_prediction_grid (xx, yy, prediction_grid, confidence_grid, predictors, testing):
     """ 
     Plot KNN predictions for every point on the grid. The background is the prediction of every point of the grid
     and the circular points are the real points of the set and their classifications.
     """
     
-    background_colormap = ListedColormap (["hotpink","yellowgreen", "lightskyblue","navajowhite","plum"])
-    observation_colormap = ListedColormap (["red","green","blue","darkorange","purple"])
+    background_colormap = ListedColormap (["hotpink","yellowgreen","navajowhite","plum","lightskyblue"])
+    observation_colormap = ListedColormap (["red","green","darkorange","blueviolet","blue"])
     fig = plt.figure(figsize =(10,10))
     # pcolormesh paints the grid using the prediction grid
-    plt.pcolormesh(xx, yy, prediction_grid, cmap = background_colormap, alpha = 0.5)
+    plt.pcolormesh(xx, yy, prediction_grid, cmap = background_colormap, alpha = 0.5, shading='nearest')
     plt.scatter(predictors[:,0], predictors[:,1], c = predictors[:,2], cmap = observation_colormap, s = 35, edgecolor="black", linewidth=0.5)
+    plt.scatter(testing[:,0], testing[:,1], c = testing[:,2], cmap = observation_colormap, s=60, edgecolor="black", linewidth=0.9, marker="X")
     plt.xlabel('X coordinate'); plt.ylabel('Y coordinate')
     plt.xlim (np.min(xx), np.max(xx))
     plt.ylim (np.min(yy), np.max(yy))
     return fig
 
 #Esta es otra
-def plot_prediction_confidence_grid(xx, yy, prediction_grid, confidence_grid, predictors, h):
+def plot_prediction_confidence_grid(xx, yy, prediction_grid, confidence_grid, predictors, h, testing):
     
     """
     This function plots the grid but now considering the confidence of each prediction. The background now doesn't have
@@ -124,8 +125,8 @@ def plot_prediction_confidence_grid(xx, yy, prediction_grid, confidence_grid, pr
     from matplotlib.colors import ListedColormap
 
     norm = plt.Normalize(prediction_grid.min(), prediction_grid.max())
-    background_colormap = ListedColormap (["hotpink","yellowgreen", "lightskyblue","navajowhite","plum"])
-    observation_colormap = ListedColormap (["red","green","blue","darkorange","purple"])
+    background_colormap = ListedColormap (["hotpink", "yellowgreen", "navajowhite", "plum", "lightskyblue"])
+    observation_colormap = ListedColormap (["red", "green", "darkorange", "blueviolet", "blue"])
     fig = plt.figure(figsize=(10,10))
     ax = fig.add_subplot(1, 1, 1)
 
@@ -138,12 +139,14 @@ def plot_prediction_confidence_grid(xx, yy, prediction_grid, confidence_grid, pr
             ax.add_patch(rect)
     
     ax.relim()
+    ax.set_xlabel('X coordinate'); ax.set_ylabel('Y coordinate')
     ax.autoscale(enable=True, tight=True)
     ax.scatter(predictors[:,0], predictors[:,1], c = predictors[:,2], cmap = observation_colormap, s = 35, zorder=2, edgecolor="black", linewidth=0.5)
+    ax.scatter(testing[:,0], testing[:,1], c = testing[:,2], cmap = observation_colormap, s=60, zorder=3, edgecolor="black", linewidth=0.9, marker="X")
 
     return fig
 
-def knn_prediction_grid(predictors, k=5, h=0.25, plot=False, plot_format = "normal"):
+def knn_prediction_grid(predictors, testing,k=5, h=0.25, plot=False, plot_format = "normal"):
     """
         This function takes the predictors, a K parameter (default is 5),
         a step parameter (h) for the grid's steps (default is 0.1),
@@ -167,9 +170,9 @@ def knn_prediction_grid(predictors, k=5, h=0.25, plot=False, plot_format = "norm
     xx, yy, prediction_grid, confidence_grid = make_prediction_grid(predictors, (np.min(predictors[:,0]) - 1.5, np.max(predictors[:,0]) + 1.5, np.min(predictors[:,1]) - 1.5, np.max(predictors[:,1]) + 1.5), h, k)
     if plot:
         if plot_format == "normal":
-            graph = plot_prediction_grid(xx, yy, prediction_grid, confidence_grid, predictors)
+            graph = plot_prediction_grid(xx, yy, prediction_grid, confidence_grid, predictors, testing)
         else:
-            graph = plot_prediction_confidence_grid(xx, yy, prediction_grid, confidence_grid, predictors, h)
+            graph = plot_prediction_confidence_grid(xx, yy, prediction_grid, confidence_grid, predictors, h, testing)
     return (xx, yy, prediction_grid, confidence_grid, graph)
 
 # Código para testear algoritmo
