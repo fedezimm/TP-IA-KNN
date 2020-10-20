@@ -1,8 +1,6 @@
 Agregar:
-    * Los gráficos de grid:
-        * Diferenciar los puntos de training (sólo con estos generar el grid) y test (marcar con otra forma, X por ejemplo).
     * Agregar lo de clasificar un nuevo punto y mostrar la prediccion con su valor de confianza asociado.
-    * Agregar Tests:
+    * Tests:
 	    * Podemos ir variando el seed para generar distintos tipos de datasets de training y test, y, para un mismo k calcular
 	    el promedio de accuracies obtenido. Esto para tener una mejor representación del valor de accuracy por valor de K.
         * También podríamos variar la proporcion de training y test para un mismo K.
