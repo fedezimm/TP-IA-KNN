@@ -7,6 +7,6 @@ setup(
    description='A KNN grapher',
    author='Team N5 - IA - UTN',
    author_email=['fedezimm@gmail.com','carlosszaracho@gmail.com','geraenrique97@hotmail.com','nikoalegre97@gmail.com'],
-   install_requires=['streamlit','scikit-learn','scipy','matplotlib','pandas','numpy']
+   install_requires=['numpy','matplotlib','streamlit','pandas','scikit-learn']
  
 )
