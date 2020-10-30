@@ -59,7 +59,7 @@ def step2(data, training, testing, labels):
         # Se testean los modelos con k de 1 a N. Se usan siempre los mismos datos de test.
         coherences_multiple_k = test_multiple_knn(training, testing, lastk=n)
         # Se grafica K vs Accuracy obtenido
-        multiple_k_graph = plot_multiple_k(coherences_multiple_k)
+        multiple_k_graph = plot_multiple_k(coherences_multiple_k)[1]
         st.write(multiple_k_graph)
         #Se ejecuta el paso 3.
         step3(coherences_multiple_k, training, testing, n, labels)

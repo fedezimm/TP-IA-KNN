@@ -9,12 +9,12 @@ def main():
     st.sidebar.title("TP Final - Grupo 5 - IA")
     mode = st.sidebar.selectbox(
         "Elige el modo de la aplicación",
-        ["App Mode", "Tests Mode"]
+        ["Modo App", "Modo Tests"]
     )
     
-    if mode == "App Mode":
+    if mode == "Modo App":
         run_the_app()
-    elif mode == "Tests Mode":
+    elif mode == "Modo Tests":
         run_tests()
 
 def get_file_content_as_string(path):
@@ -46,7 +46,7 @@ def run_tests():
     #Codigo TestMode
     test_mode = st.sidebar.selectbox(
         "Elige el test",
-        ["Mostrar instrucciones","¿Qué metodo de validación elegir?", "Matrices de Confusión", "Errores de Test vs Errores de Training"]
+        ["Mostrar instrucciones","¿Qué metodo de validación elegir?", "Matrices de Confusión"]
     )
     if test_mode == "Mostrar instrucciones":
         st.sidebar.success("Para continuar seleccione alguna de las demás opciones disponibles.")
@@ -54,13 +54,9 @@ def run_tests():
         readme_text.empty()
         st.markdown("# Trabajo Final - Grupo 5 - Inteligencia Artificial 2020 - K-Nearest Neighbors")
         test1()
-    #elif app_mode == "Matrices de Confusión":
-        #readme_text.empty()
-        #st.markdown("# Trabajo Final - Grupo 5 - Inteligencia Artificial 2020 - K-Nearest Neighbors")
-        #test2()
-    #elif test_mode == "Errores de Test vs Errores de Training":
-        #readme_text.empty()
-        #st.markdown("# Trabajo Final - Grupo 5 - Inteligencia Artificial 2020 - K-Nearest Neighbors")
-        #test3()
+    elif test_mode == "Matrices de Confusión":
+        readme_text.empty()
+        st.markdown("# Trabajo Final - Grupo 5 - Inteligencia Artificial 2020 - K-Nearest Neighbors")
+        test2()
 
 main()

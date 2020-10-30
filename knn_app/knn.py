@@ -109,7 +109,7 @@ def plot_prediction_grid (xx, yy, prediction_grid, confidence_grid, predictors, 
     dictionary = {
         2:["red","blue"],
         3:["red","darkorange","blue"],
-        4:["red","green","darkorange","blue"],
+        4:["red","green","blueviolet","blue"],
         5:["red","green","darkorange","blueviolet","blue"] 
     }
     observation_colormap = dictionary[cant_class]
@@ -156,7 +156,7 @@ def plot_prediction_confidence_grid(xx, yy, prediction_grid, confidence_grid, pr
     dictionary = {
         2:["red","blue"],
         3:["red","darkorange","blue"],
-        4:["red","green","darkorange","blue"],
+        4:["red","green","blueviolet","blue"],
         5:["red","green","darkorange","blueviolet","blue"] 
     }
     observation_colormap = dictionary[cant_class]
@@ -372,6 +372,7 @@ def plot_test_normal_validation(points, train_prop, seed, k_max=25):
 def get_normal_validation_metrics(points, train_prop, seed=10, k_max=25):
     values_nv, graph_nv = plot_test_normal_validation(points, train_prop, seed, k_max)
     mean_nv = np.mean(values_nv)
+    var_nv = np.var(values_nv)
     stdev_nv = np.std(values_nv)
     min_nv = np.min(values_nv)
     max_nv = np.max(values_nv)
@@ -380,6 +381,7 @@ def get_normal_validation_metrics(points, train_prop, seed=10, k_max=25):
     percentile75th_nv = np.percentile(values_nv, 75)
     output = {
         "Mean": mean_nv,
+        "Variance": var_nv,
         "Standard Deviation": stdev_nv,
         "Min Value": min_nv,
         "Max Value": max_nv,
@@ -392,6 +394,7 @@ def get_normal_validation_metrics(points, train_prop, seed=10, k_max=25):
 def get_cross_validation_metrics(points, k_max, cv=5, seed=10):
     values_cv, graph_cv = plot_test_cross_validation_results(points, k_max, cv, seed)
     mean_cv = np.mean(values_cv)
+    var_cv = np.var(values_cv)
     stdev_cv = np.std(values_cv)
     min_cv = np.min(values_cv)
     max_cv = np.max(values_cv)
@@ -400,6 +403,7 @@ def get_cross_validation_metrics(points, k_max, cv=5, seed=10):
     percentile75th_cv = np.percentile(values_cv, 75)
     output = {
         "Mean": mean_cv,
+        "Variance": var_cv,
         "Standard Deviation": stdev_cv,
         "Min Value": min_cv,
         "Max Value": max_cv,
@@ -500,17 +504,17 @@ def get_cm_metrics(confusion_matrix):
     false_or = FN / (FN+TN)
     f_score = 2*sensitivity*precision/(sensitivity+precision)
     output = {
-        "sensitivity": sensitivity,
-        "specificity": specificity,
-        "precision": precision,
-        "negative_predictive_value": npv,
-        "miss_rate": miss_rate,
-        "fall_out": fall_out,
-        "false_discovery_rate": fdr,
-        "false_omission_rate": false_or,
-        "accuracy": accuracy,
-        "balanced_accuracy": ba,
-        "f_score": f_score
+        "Sensibilidad o Tasa de Verdaderos positivos": sensitivity,
+        "Especificidad o Tasa de verdaderos negativos": specificity,
+        "Precisión o Valor de predicción positivo": precision,
+        "Valor de predicción negativo": npv,
+        "Tasa de pérdida o Tasa de falsos negativos": miss_rate,
+        "Tasa de Falsos positivos o de Caída": fall_out,
+        "Tasa de descubrimiento falso": fdr,
+        "Tasa de omisiones falsas": false_or,
+        "Coherencia": accuracy,
+        "Coherencia balanceada": ba,
+        "F-score": f_score
     }
     return output
 
@@ -540,15 +544,15 @@ def get_cm_metrics_multiple_classes(confusion_matrixes):
     false_or = 0
     
     for cm_metrics in cms_metrics:
-        sensitivity += cm_metrics["sensitivity"]  
-        specificity += cm_metrics["specificity"]
-        precision += cm_metrics["precision"]
-        npv += cm_metrics["negative_predictive_value"]
-        miss_rate += cm_metrics["miss_rate"]
-        fall_out += cm_metrics["fall_out"]
-        fdr += cm_metrics["false_omission_rate"]
-        false_or += cm_metrics["false_omission_rate"]
-        accuracy += cm_metrics["accuracy"]
+        sensitivity += cm_metrics["Sensibilidad o Tasa de Verdaderos positivos"]  
+        specificity += cm_metrics["Especificidad o Tasa de verdaderos negativos"]
+        precision += cm_metrics["Precisión o Valor de predicción positivo"]
+        npv += cm_metrics["Valor de predicción negativo"]
+        miss_rate += cm_metrics["Tasa de pérdida o Tasa de falsos negativos"]
+        fall_out += cm_metrics["Tasa de Falsos positivos o de Caída"]
+        fdr += cm_metrics["Tasa de descubrimiento falso"]
+        false_or += cm_metrics["Tasa de omisiones falsas"]
+        accuracy += cm_metrics["Coherencia"]
         
     sensitivity = sensitivity/n
     accuracy = accuracy/n
@@ -563,17 +567,17 @@ def get_cm_metrics_multiple_classes(confusion_matrixes):
     ba = (sensitivity+specificity)/2
     
     output = {
-        "sensitivity": sensitivity,
-        "specificity": specificity,
-        "precision": precision,
-        "negative_predictive_value": npv,
-        "miss_rate": miss_rate,
-        "fall_out": fall_out,
-        "false_discovery_rate": fdr,
-        "false_omission_rate": false_or,
-        "accuracy": accuracy,
-        "balanced_accuracy": ba,
-        "f_score": f_score
+        "Sensibilidad o Tasa de Verdaderos positivos": sensitivity,
+        "Especificidad o Tasa de verdaderos negativos": specificity,
+        "Precisión o Valor de predicción positivo": precision,
+        "Valor de predicción negativo": npv,
+        "Tasa de pérdida o Tasa de falsos negativos": miss_rate,
+        "Tasa de Falsos positivos o de Caída": fall_out,
+        "Tasa de descubrimiento falso": fdr,
+        "Tasa de omisiones falsas": false_or,
+        "Coherencia": accuracy,
+        "Coherencia balanceada": ba,
+        "F-score": f_score
     }
     return output
 
@@ -600,7 +604,7 @@ def plot_binary_classification_roc_metric(training_set, test_set, k):
     
     return fig, fpr, tpr, roc_auc, threshold
 
-def plot_multiple_classification_roc_metric(training_set, test_set, k):
+def plot_multiple_classification_roc_metric(training_set, test_set, labels, k):
     classes_quantity = np.unique(training_set[:,2]).size
     test_with_predictions = np.concatenate((test_set, np.zeros((len(test_set), 2))), axis = 1)
     for point in test_with_predictions:
@@ -617,7 +621,7 @@ def plot_multiple_classification_roc_metric(training_set, test_set, k):
 
         fpr, tpr, threshold = roc_curve(values, probability_scores, pos_label=i+1)
         roc_auc = auc(fpr, tpr)
-        plt.plot(fpr, tpr,'o-', label = 'AUC = %0.2f (Class ' % roc_auc + str(i+1) + ')')
+        plt.plot(fpr, tpr,'o-', label = 'AUC = %0.2f (Class ' % roc_auc + str(labels[i]) + ')')
         
         fprs.append(fpr)
         tprs.append(tpr)
@@ -631,4 +635,67 @@ def plot_multiple_classification_roc_metric(training_set, test_set, k):
     plt.title("Curva ROC de KNN con K = " + str(k))
     plt.legend()
     return fig, fprs, tprs, roc_aucs
+
+def get_list_of_metrics(training, test, k_max = 25):
+    metrics_list = []
+    for i in range(1,k_max+1):
+        cm = get_confusion_matrix_binary(training, test, k=i)
+        cm_metrics = get_cm_metrics(cm)
+        metrics_list.append(cm_metrics)
+    return metrics_list
+
+def plot_cm_metrics_list(metrics_list):
+    x = list(range(1,len(metrics_list)+1))
+    sens = []
+    especs = []
+    precs = []
+    nvps = []
+    miss_rates = []
+    fall_outs = []
+    fdrs = []
+    fors = []
+    accuracies = []
+    bas = []
+    f_scores = []
+    for metrics in metrics_list:
+        sens.append(metrics["Sensibilidad o Tasa de Verdaderos positivos"])
+        especs.append(metrics["Especificidad o Tasa de verdaderos negativos"])
+        precs.append(metrics["Precisión o Valor de predicción positivo"])
+        nvps.append(metrics["Valor de predicción negativo"])
+        miss_rates.append(metrics["Tasa de pérdida o Tasa de falsos negativos"])
+        fall_outs.append(metrics["Tasa de Falsos positivos o de Caída"])
+        fdrs.append(metrics["Tasa de descubrimiento falso"])
+        fors.append(metrics["Tasa de omisiones falsas"])
+        accuracies.append(metrics["Coherencia"])
+        bas.append(metrics["Coherencia balanceada"])
+        f_scores.append(metrics["F-score"])
+
+    output = {
+        "Sensibilidad":sens,
+        "Especificidad":especs,
+        "Precisión":especs,
+        "Precisión":precs,
+        "Valor de predicción negativo":nvps,
+        "Tasa de pérdida":miss_rates,
+        "Tasa de caída":fall_outs,
+        "Tasa de descubrimiento falso":fdrs,
+        "Tasa de omisiones falsas":fors,
+        "Coherencia":accuracies,
+        "Coherencia balanceada":bas,
+        "F-score":f_scores
+    }
+
+    return x, output
+
+def get_list_of_metrics_mult(training, test, k_max = 25):
+    metrics_list = []
+    for i in range(1,k_max+1):
+        cms = get_classes_confusion_matrixes(training, test, k=i)
+        cms_metrics = get_cm_metrics_multiple_classes(cms)
+        metrics_list.append(cms_metrics)
+    return metrics_list
+
+    
+
+
 
