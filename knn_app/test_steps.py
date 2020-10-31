@@ -155,7 +155,7 @@ def test2():
                     st.markdown("### Gráfico de todas las metricas con k de 1 a 25")
                     choices = ["Sensibilidad","Especificidad","Precisión","Valor de predicción negativo","Tasa de pérdida","Tasa de caída","Tasa de descubrimiento falso","Tasa de omisiones falsas","Coherencia","Coherencia balanceada","F-score"]
                     selected = st.multiselect(
-                        "Seleccione las métricas que quiere visualizar",
+                        "Seleccione las métricas que quiere visualizar. Deben ser al menos 3.",
                         choices
                     )
                     if len(selected) > 2:
