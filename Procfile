@@ -1,1 +1,1 @@
-web: cd ./knn_app && streamlit run app.py 
+web: cd ./knn_app && streamlit run app.py --server-port $PORT
