@@ -34,7 +34,7 @@ def run_the_app():
         ["Mostrar instrucciones", "Aplicación"]
     )
     if app_mode == "Mostrar instrucciones":
-        st.sidebar.success("Para continuar selecciona 'App Mode' o 'Tests Mode'.")
+        st.sidebar.success("Para continuar selecciona la opción 'Aplicación'.")
     elif app_mode == "Aplicación":
         readme_text.empty()
         st.markdown("# Trabajo Final - Grupo 5 - Inteligencia Artificial 2020 - K-Nearest Neighbors")
@@ -49,7 +49,7 @@ def run_tests():
         ["Mostrar instrucciones","¿Qué metodo de validación elegir?", "Matrices de Confusión"]
     )
     if test_mode == "Mostrar instrucciones":
-        st.sidebar.success("Para continuar seleccione alguna de las demás opciones disponibles.")
+        st.sidebar.success("Para continuar seleccione algun test.")
     elif test_mode == "¿Qué metodo de validación elegir?":
         readme_text.empty()
         st.markdown("# Trabajo Final - Grupo 5 - Inteligencia Artificial 2020 - K-Nearest Neighbors")

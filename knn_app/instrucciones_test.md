@@ -17,9 +17,7 @@ En esta sección clasificaremos a los datos ingresados por medio del método de 
 * **1.5**: Elegir el **seed** o **semilla** que se usará para mezclar los datos y así obtener los dos conjuntos (training y test). Esto se pide para tener en todo momento de ejecución los mismos puntos de training y test. La forma de obtenerlos es mezclando los datos aleatoriamente y luego cortando y dividiendo justo en la proporción antes indicada. El seed o semilla sólo puede variar entre 1 y 50 para mayor simplicidad.
 
 ### Paso 2: Visualización y comparación de los resultados obtenidos
-* **2.1**: Se mostrará el grafico de "Valor K VS Coherencias", estadísticos del conjunto de valores de coherencia obtenidos,
-y un histograma y diagrama del conjunto de valores de coherencia obtenidos, tanto del método de validación cruzada como el método
-de validación normal.
+* **2.1**: Se mostrará el grafico de "Valor K VS Coherencias", estadísticos del conjunto de valores de coherencia obtenidos, y un histograma y diagrama de caja del conjunto de valores de coherencia obtenidos, tanto del método de validación cruzada como el método de validación normal.
 * **2.2**: Se podrá visualizar una conclusión con información descriptiva de los datos presentados en el paso anterior. 
 
 
@@ -35,11 +33,11 @@ Aquí intentaremos analizar el k óptimo pero incorporando más métricas para e
 * **1.1**: Cargar archivo **".csv" o ".txt"** con los datos que se usarán para analizar los modelos KNN que se construirán. El formato del archivo debe ser: valorX,valorY,valorClase. Teniendo en este ejemplo, la coma como separador. También se debe añadir nombre a las columnas.
 * **1.2**: Indicar el **separador** de campos del archivo (";", ",", "Tab").
 * **1.3**: Se indica que los datos fueron cargados con **éxito**. Se puede comprobar esto haciendo click en la casilla **"Ver Datos"**. También se indica cuántos puntos (filas) tenía el archivo cargado.
-* **1.4**: Seleccionar la **proporción** de los datos a **entrenar** (0.7, 0.75, 0.8 y 0.85 son las opciones disponibles,los puntos restantes se usarán para validar los modelos).
+* **1.4**: Seleccionar la **proporción** de los datos a **entrenar** (0.7, 0.75, 0.8 y 0.85 son las opciones disponibles, los puntos restantes se usarán para validar los modelos).
 * **1.5**: Elegir el **seed** o **semilla** que se usará para mezclar los datos y así obtener los dos conjuntos (training y test). Esto se pide para tener en todo momento de ejecución los mismos puntos de training y test. La forma de obtenerlos es mezclando los datos aleatoriamente y luego cortando y dividiendo justo en la proporción antes indicada. El seed o semilla sólo puede variar entre 1 y 50 para mayor simplicidad.
 
 ### Paso 2: Visualización de los datos obtenidos para cada K
-* **2.1**: Se podrá visualizar para cada K, la matriz de confusión, distintas métricas obtenidas y, además, existe la posibilidad de seleccionar "Ver curva ROC" para desplegar el gráfico de ROC (Receiver Operating Characteristics).
+* **2.1**: Se podrá visualizar para cada K, la/s matriz/ces de confusión, distintas métricas obtenidas y, además, existe la posibilidad de seleccionar "Ver curva ROC" para desplegar el gráfico de ROC (Receiver Operating Characteristics).
 
 ### Paso 3: Visualización del gráfico de todas las metricas con k de 1 a 25
 * **2.1**: Desplazarse al final de la página
