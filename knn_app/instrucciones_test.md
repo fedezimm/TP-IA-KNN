@@ -1,8 +1,8 @@
 # Trabajo Final - Grupo 5 - Inteligencia Artificial 2020 - K-Nearest Neighbors
 
 
-## Modo Tests: ¿Que método de validación elegir?
-La validación cruzada es una técnica para evaluar modelos de Machine Learning mediante el entrenamiento de varios modelos de Machine Learning en subconjuntos de los datos de entrada disponibles y evaluarlos con el subconjunto complementario de los datos.
+## ¿Que método de validación elegir?
+La **validación cruzada** es una técnica para evaluar modelos de Machine Learning mediante el entrenamiento de varios modelos de Machine Learning en subconjuntos de los datos de entrada disponibles y evaluarlos con el subconjunto complementario de los datos.
 
 En la validación cruzada de K iteraciones se dividen los datos de entrada en K subconjuntos de datos (también conocido como iteraciones). Puede entrenar un modelo de ML en todos menos uno (k-1) de los subconjuntos y, a continuación, evaluar el modelo en el subconjunto que no se ha utilizado para el entrenamiento. Este proceso se repite K veces, con un subconjunto diferente reservado para la evaluación (y excluido del entrenamiento) cada vez.
 
@@ -21,7 +21,7 @@ En esta sección clasificaremos a los datos ingresados por medio del método de 
 * **2.2**: Se podrá visualizar una conclusión con información descriptiva de los datos presentados en el paso anterior. 
 
 
-## Modo Tests: Matrices de Confusión
+## Matrices de Confusión
 Aquí intentaremos analizar el k óptimo pero incorporando más métricas para el análisis. Estás métricas se obtienen a partir de la matriz de confusión. Esta matriz nos permite distinguir con mayor claridad los puntos testeados como:
 
 * **Verdaderos positivos (VP):** Puntos cuya etiqueta real era 1 y su predicción fue 1.

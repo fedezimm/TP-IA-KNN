@@ -1,6 +1,6 @@
 # Trabajo Final - Grupo 5 - Inteligencia Artificial 2020 - K-Nearest Neighbors
 
-## Modo App
+## Aplicación
 
 ### Paso 1: Carga y preparación de los datos.
 * **1.1**: Cargar archivo **".csv" o ".txt"** con los datos que se usarán para analizar los modelos KNN que se construirán. El formato del archivo debe ser: valorX,valorY,valorClase. Teniendo en este ejemplo, la coma como separador. También se debe añadir nombre a las columnas.
