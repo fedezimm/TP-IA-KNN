@@ -9,7 +9,7 @@
   "environments": {
     "prod": {
       "scripts": {
-        "prod": "cd knn_app && sreamlit app.py "
+        "prod": "cd knn_app && sreamlit run app.py "
       }
     }
   }
