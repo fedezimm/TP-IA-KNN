@@ -17,6 +17,7 @@ This project is based in python >= 3.7, please sure that you have this version.
 >cd TP-IA-KNN/knn_app
 5. Once you are in the directory, execute the next command to create and activate a virtual environment (so the dependencies of the project don't mix with others to avoid dependencies errors).
 >virtualenv app_env
+
 >app_env\Scripts\activate
 6. Install the requirements with the next command:
 >pip install -r requirements.txt
