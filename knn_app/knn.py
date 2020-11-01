@@ -194,8 +194,11 @@ def knn_prediction_grid(predictors, testing, labels,k=5, h=0.25, plot=False, plo
 
     if plot_format != 'normal' and plot_format != "confidence":
         raise Exception("The value of the 'plot_format' parameter must be 'normal'/'confidence'.")
-        
-    xx, yy, prediction_grid, confidence_grid = make_prediction_grid(predictors, (np.min(predictors[:,0]) - 1.5, np.max(predictors[:,0]) + 1.5, np.min(predictors[:,1]) - 1.5, np.max(predictors[:,1]) + 1.5), h, k)
+
+    if np.std(predictors)>=10:
+        xx, yy, prediction_grid, confidence_grid = make_prediction_grid(predictors,(np.percentile(predictors[:,0],25) - 5, np.percentile(predictors[:,0],75) + 5, np.percentile(predictors[:,1],25) - 5, np.percentile(predictors[:,1],75) + 5), h, k)
+    else:
+        xx, yy, prediction_grid, confidence_grid = make_prediction_grid(predictors,(np.min(predictors[:,0]) - 1.5, np.max(predictors[:,0]) + 1.5, np.min(predictors[:,1]) - 1.5, np.max(predictors[:,1]) + 1.5), h, k)
     if plot:
         if plot_format == "normal":
             graph = plot_prediction_grid(xx, yy, prediction_grid, confidence_grid, predictors, testing, labels)
