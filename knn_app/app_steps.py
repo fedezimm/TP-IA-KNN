@@ -53,7 +53,7 @@ def step2(data, training, testing, labels):
     # Seleccion del valor de N                
     n = st.selectbox(
         'Selecciona el valor de N',
-        [None] + list(range(1,len(data)))
+        [None] + list(range(1,len(training)))
     )
     if n is not None:
         # Se testean los modelos con k de 1 a N. Se usan siempre los mismos datos de test.
@@ -141,7 +141,7 @@ def step5(training, best_k, k_selected, labels):
         'Selecciona la coordenada X del nuevo punto a predecir',
         min_value= float(np.min(training[:,0]) - 3.0),
         max_value= float(np.max(training[:,0]) + 3.0),
-        value=0.0
+        value=np.mean(training[:,0])
     )
     
     # Seleccion de la coordenada Y del punto
@@ -149,7 +149,7 @@ def step5(training, best_k, k_selected, labels):
         'Selecciona la coordenada Y del nuevo punto a predecir',
         min_value= float(np.min(training[:,1]) - 3.0),
         max_value= float(np.max(training[:,1]) + 3.0),
-        value=0.0
+        value=np.mean(training[:,1])
     )
     
     # Generación del nuevo punto
