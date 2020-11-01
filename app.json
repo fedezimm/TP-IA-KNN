@@ -1,0 +1,16 @@
+{
+  "name": "KNN Grapher",
+  "description": "A barebones Python app, which can helps you use the KNN algorithm.",
+  "image": "heroku/python",
+  "repository": "https://github.com/santinozaracho/TP-IA-KNN",
+  "keywords": ["python", "streamlit"],
+  "addons": [],
+  "env": {},
+  "environments": {
+    "prod": {
+      "scripts": {
+        "prod": "cd knn_app && sreamlit app.py "
+      }
+    }
+  }
+}
