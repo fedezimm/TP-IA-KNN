@@ -10,7 +10,10 @@ We recommend you to use Windows.
 
 ## How to run the project?
 
-1. Make sure you have python version 3.7 and pip installed and added to the PATH.
+
+### **Option 1**
+
+1. Make sure you have python (version 3.7) and pip installed and added to the PATH.
 
 - For more information go to: https://www.python.org/downloads/
 
@@ -23,3 +26,7 @@ We recommend you to use Windows.
 5. Now run the app:
    > cd knn_app && streamlit run app.py
 6. Enjoy it!!! 💻💻
+
+
+### **Option 2**
+1. If you don't want to run locally, just visit: https://knn-ia-g5.herokuapp.com/  
