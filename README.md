@@ -29,4 +29,7 @@ We recommend you to use Windows.
 
 
 ### **Option 2**
-1. If you don't want to run locally, just visit: https://knn-ia-g5.herokuapp.com/  
+1. If you don't want to run locally, just visit: https://knn-ia-g5.herokuapp.com/ 
+
+
+There is also a **notebook** where we have developed and documented the python functions that we have used. 
