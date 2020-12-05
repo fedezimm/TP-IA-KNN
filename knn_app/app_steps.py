@@ -31,7 +31,7 @@ def step1():
             st.write("Hay ", data.shape[0], ' puntos cargados')
             #Selección de la proporcion de entrenamiento
             train_prop = st.selectbox('Seleccione la proporción de datos de entrenamiento',
-                            [None,0.7,0.75,0.8,0.85]
+                            [0.7,0.75,0.8,0.85]
             )            
             if train_prop is not None:                
                 st.write('La proporción de entrenamiento elegida es de: ', train_prop,'la de test es: ', round(1-train_prop,2))
@@ -53,7 +53,7 @@ def step2(data, training, testing, labels):
     # Seleccion del valor de N                
     n = st.selectbox(
         'Selecciona el valor de N',
-        [None] + list(range(1,len(training)))
+        list(range(1,len(training)))
     )
     if n is not None:
         # Se testean los modelos con k de 1 a N. Se usan siempre los mismos datos de test.
@@ -95,7 +95,7 @@ def step3(coherences_multiple_k, training, testing, n, labels):
     #Seleccion de la resolución del gráfico. 
     h1 = st.selectbox(
         'Seleccione la resolución del gráfico',
-        [None,0.1,0.25,0.5], key=1
+        [0.5,0.25,0.1], key=1
     )
     plot_format = 'normal' if rta == 'Normal' else 'confidence'
     if h1 is not None:
@@ -122,7 +122,7 @@ def step4(n, training, testing, best_k, coherences_multiple_k, labels):
         # Selección de la resolución del gráfico
         h2 = st.selectbox(
             'Seleccione la resolución del gráfico',
-            [None, 0.1,0.25,0.5], key=2
+            [0.5,0.25,0.1], key=2
         )
         if h2 is not None:
             plot_format2 = 'normal' if rta2 == 'Normal' else 'confidence'
