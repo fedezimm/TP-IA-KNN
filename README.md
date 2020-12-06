@@ -44,9 +44,29 @@ We recommend you to use Windows.
    ```
 5. Now run the app:
    ```
-   sudo cd knn_app && streamlit run app.py
+   cd knn_app && streamlit run app.py
    ```
 6. Enjoy it!!! 💻💻
+
+#### **Some exceptions**
+
+- If you try to run the app and you have problem with <b>streamlit</b> like the next one:
+  ```
+  Traceback (most recent call last):
+     File "usr/local/bin/streamlit", line 5, in <module>
+        from streamlit.cli import main
+     File "usr/local/bin/streamlit", line 5, in <module>
+        from streamlit.cli import main
+  ```
+  Run the followind command:
+  > if you have pip:
+  ```
+  pip install --upgrade protobuf
+  ```
+  > if you have pip3:
+  ```
+  pip3 install --upgrade protobuf
+  ```
 
 ### **Option 2**
 
