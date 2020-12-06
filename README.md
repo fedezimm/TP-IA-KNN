@@ -11,7 +11,15 @@ We recommend you to use Windows.
 
 ### **Option 1**
 
-1. Make sure you have python (version 3.7) and pip installed and added to the PATH.
+1. Make sure you have python (version 3.7) and pip installed and added to the PATH. You can do it with:
+   > if you have pip:
+   ```
+   pip --version
+   ```
+   > if you have pip3:
+   ```
+   pip3 --version
+   ```
 
 - For more information go to: https://www.python.org/downloads/
 
@@ -20,7 +28,7 @@ We recommend you to use Windows.
    ```
    git clone https://github.com/fedezimm/TP-IA-KNN.git
    ```
-3. Execute the following command and make sure that you are in the root folder of the repository
+3. Execute the following command and make sure that you are in the <b>root folder</b> of the repository
    >
    ```
    cd TP-IA-KNN
@@ -28,14 +36,16 @@ We recommend you to use Windows.
 4. Install all dependencies:
    > if you have pip:
    ```
-   pip install -r requirements.txt
+   sudo pip install -r requirements.txt
    ```
    > if you have pip3:
    ```
-   pip3 install -r requirements.txt
+   sudo pip3 install -r requirements.txt
    ```
 5. Now run the app:
-   > cd knn_app && streamlit run app.py
+   ```
+   sudo cd knn_app && streamlit run app.py
+   ```
 6. Enjoy it!!! 💻💻
 
 ### **Option 2**
