@@ -53,7 +53,7 @@ def step2(data, training, testing, labels):
     # Seleccion del valor de N                
     n = st.selectbox(
         'Selecciona el valor de N',
-        list(range(1,len(training)))
+        [100] + list(range(1,len(training)))
     )
     if n is not None:
         # Se testean los modelos con k de 1 a N. Se usan siempre los mismos datos de test.
@@ -111,7 +111,7 @@ def step4(n, training, testing, best_k, coherences_multiple_k, labels):
     # Selección de K
     k_selected = st.selectbox(
         'Selecciona el valor de K',
-        [None] + list(range(1,n+1))
+        list(range(1,n+1))
     )
     if k_selected is not None:
         # Selección del formato de gráfico
