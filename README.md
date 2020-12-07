@@ -34,6 +34,8 @@ We recommend you to use Windows.
    ```
    sudo pip3 install -r requirements.txt
    ```
+   In case of having Windows, execute the command without the word "sudo"
+   
 5. Now run the app:
    ```
    cd knn_app && streamlit run app.py
