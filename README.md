@@ -12,11 +12,11 @@ We recommend you to use Windows.
 ### **Option 1**
 
 1. Make sure you have python (version 3.7) and pip installed and added to the PATH. You can do it with:
-   > if you have pip:
+   > pip:
    ```
    pip --version
    ```
-   > if you have pip3:
+   > pip3:
    ```
    pip3 --version
    ```
@@ -34,11 +34,11 @@ We recommend you to use Windows.
    cd TP-IA-KNN
    ```
 4. Install all dependencies:
-   > if you have pip:
+   > pip:
    ```
    sudo pip install -r requirements.txt
    ```
-   > if you have pip3:
+   > pip3:
    ```
    sudo pip3 install -r requirements.txt
    ```
