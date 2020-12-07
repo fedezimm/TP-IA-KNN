@@ -50,7 +50,28 @@ We recommend you to use Windows.
 
 #### **Some exceptions**
 
-- If you try to run the app and you have problem with <b>streamlit</b> like the next one:
+- If you did all the above steps and you run:
+
+  ```
+  streamlit
+  ```
+
+  and the message is: <i>'command not found'</i>.
+  Then, the problem is that streamlit is not in the path. So, you have to go to the folder where Python is installed and run the command from this folder:
+
+  > Windows:
+
+  ```
+  /Python/scripts/streamlit run app.py
+  ```
+
+  > Linux or Mac:
+
+  ```
+  /usr/local/bin/streamlit run app.py
+  ```
+
+- If you try to run the app and you have the following problem with <b>streamlit</b>:
   ```
   Traceback (most recent call last):
      File "usr/local/bin/streamlit", line 5, in <module>
@@ -59,11 +80,11 @@ We recommend you to use Windows.
         from streamlit.cli import main
   ```
   Run the followind command:
-  > if you have pip:
+  > pip:
   ```
   pip install --upgrade protobuf
   ```
-  > if you have pip3:
+  > pip3:
   ```
   pip3 install --upgrade protobuf
   ```
