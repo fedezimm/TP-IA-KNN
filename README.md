@@ -78,6 +78,8 @@ We recommend you to use Windows.
         from streamlit.cli import main
      File "usr/local/bin/streamlit", line 5, in <module>
         from streamlit.cli import main
+     ...
+     ...
   ```
   Run the followind command:
   > pip:
