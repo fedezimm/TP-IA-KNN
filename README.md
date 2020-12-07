@@ -11,15 +11,7 @@ We recommend you to use Windows.
 
 ### **Option 1**
 
-1. Make sure you have python (version 3.7) and pip installed and added to the PATH. You can do it with:
-   > pip:
-   ```
-   pip --version
-   ```
-   > pip3:
-   ```
-   pip3 --version
-   ```
+1. Make sure you have python (version 3.7) and pip or pip3 installed and added to the PATH. You can do it with:
 
 - For more information go to: https://www.python.org/downloads/
 
